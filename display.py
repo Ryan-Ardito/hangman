@@ -113,9 +113,10 @@ def wordlists_screen(all_lists, user_lists) -> list:
             selected = '*'
         print(f'{i}. {selected} {wordlist}')
     # Parse input
-    user_input = input('Select wordlists by number: ')
-    for char in set(user_input):
-        if not char.isdigit() or int(char) > len(all_lists):
+    user_input = input('Select with numbers separated by a space: ')
+    selections = set(user_input.split())
+    for selection in selections:
+        if not selection.isnumeric() or int(selection) > len(all_lists):
             continue
-        new_lists.append(all_lists[int(char)])
+        new_lists.append(all_lists[int(selection)])
     return new_lists
